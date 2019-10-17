@@ -1,0 +1,4 @@
+#oci iam compartment create -h
+oci iam compartment create --compartment-id  $COMP --name "poc-comp1" --description "POC Compartment for IaC on OCI"
+oci iam compartment create --compartment-id  $ROOTCOMP --name "POCCOMP1" --description "POC Compartment for IaC on OCI"
+
