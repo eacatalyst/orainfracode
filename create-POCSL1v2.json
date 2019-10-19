@@ -1,0 +1,30 @@
+{
+    "compartmentId": "$POCCOMP1",
+    "displayName": "POCSL1",
+    "egressSecurityRules": [
+      {
+        "destination": "0.0.0.0/0",
+        "isStateless": false,
+        "protocol": "6",
+        "tcpOptions": {
+          "destinationPortRange": null,
+          "sourcePortRange": null
+        }
+      }
+    ],
+    "ingressSecurityRules": [
+      {
+        "isStateless": false,
+        "protocol": "6",
+        "source": "0.0.0.0/0",
+        "tcpOptions": {
+          "destinationPortRange": {
+            "max": 3389,
+            "min": 3389
+          },
+          "sourcePortRange": null
+        }
+      }
+    ],
+    "vcnId": "POCVCN1"
+  }
