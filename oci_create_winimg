@@ -1,0 +1,13 @@
+export POCCOMP1="ocid1.compartment.oc1..aaaaaaaas2dn6zl2wfmu7nyhu3itqzwfas6p63us535ed734wpqpdtykyuaq"
+export POCVCN1="ocid1.vcn.oc1.iad.aaaaaaaa7igr2rngs237pkhc3f4tzir6qzhhgwsln5ls3yvicrnz7pxb6h3a"
+export SUBN1="ocid1.subnet.oc1.iad.aaaaaaaage6trqjxi43geooqtpgs6cbckxavznn475u7od4jkdsnztmloglq"
+export WINIMGID="ocid1.image.oc1.iad.aaaaaaaawoqlemvwvlo7xuhemhhqefpnhtuyutcblhdmvl56kojqe3nsf6fa"
+
+# Create Windows POC Img
+oci compute instance launch                                     \
+--compartment-id $POCCOMP1                                      \
+--availability-domain "YQgH:US-ASHBURN-AD-1"                    \
+--shape "VM.Standard2.1"                                        \
+--display-name "POCWINDOWS1"                                    \
+--image-id $WINIMGID                                            \
+--subnet-id $SUBN1
