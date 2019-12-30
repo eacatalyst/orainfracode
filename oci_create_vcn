@@ -1,6 +1,0 @@
-# POCCOMP1="ocid1.compartment.oc1..aaaaaaaas2dn6zl2wfmu7nyhu3itqzwfas6p63us535ed734wpqpdtykyuaq"
-oci network vcn create      \
---compartment-id $POCCOMP1       \
---display-name "POCVCN1"    \
---dns-label "pocvnc1"       \
---cidr-block "10.0.0.0/16"   

@@ -1,0 +1,21 @@
+export POCCOMP1="ocid1.compartment.oc1..aaaaaaaas2dn6zl2wfmu7nyhu3itqzwfas6p63us535ed734wpqpdtykyuaq"
+export POCVCN1="ocid1.vcn.oc1.iad.aaaaaaaa7igr2rngs237pkhc3f4tzir6qzhhgwsln5ls3yvicrnz7pxb6h3a"
+export SUBN1="ocid1.subnet.oc1.iad.aaaaaaaage6trqjxi43geooqtpgs6cbckxavznn475u7od4jkdsnztmloglq"
+export LNXIMGID="ocid1.image.oc1.iad.aaaaaaaa3onyerinivkpiqektrd3idoeo72fuz56cpz6rihkvqulmoux5qkq"
+
+# Get Image List -  "VM.Standard2.1"
+oci compute image list --compartment-id $POCCOMP1   --availability-domain "YQgH:US-ASHBURN-AD-1"
+# Get Image Shape
+oci compute shape list      \
+--compartment-id $POCCOMP1  \
+--availability-domain "YQgH:US-ASHBURN-AD-1
+
+# Create Image
+oci compute instance launch                                     \
+--compartment-id $POCCOMP1                                      \
+--availability-domain "YQgH:US-ASHBURN-AD-1"                    \
+--shape "VM.Standard2.1"                                        \
+--display-name "POCLINUX1"                                      \
+--ssh-authorized-keys-file "C:\Training\DevOps\ocipoc_key.pub"  \
+--image-id $LNXIMGID                                            \
+--subnet-id $SUBN1

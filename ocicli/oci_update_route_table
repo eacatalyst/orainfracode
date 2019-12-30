@@ -1,0 +1,33 @@
+export POCRT1="ocid1.routetable.oc1.iad.aaaaaaaawvtv3mosbihv7v6xwubf4eojv3ikistruuktfjykq4bkqb56dxda"
+oci network route-table list    \
+--compartment-id $POCCOMP1      \
+--vcn-id $POCVCN1
+
+oci network route-table update \
+--rt-id $POCRT1                 \
+--route-rules '[{"cidrBlock":"0.0.0.0/0", "networkEntityId":    \
+"ocid1.internetgateway.oc1.iad.aaaaaaaavbnczvyogucbvblsglokqznjib7jlc3ka5pzpt2v5mchncq6gtma"}]'
+
+output
+{
+  "data": {
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaas2dn6zl2wfmu7nyhu3itqzwfas6p63us535ed734wpqpdtykyuaq",
+    "defined-tags": {},
+    "display-name": "Default Route Table for POCVCN1",
+    "freeform-tags": {},
+    "id": "ocid1.routetable.oc1.iad.aaaaaaaawvtv3mosbihv7v6xwubf4eojv3ikistruuktfjykq4bkqb56dxda",
+    "lifecycle-state": "AVAILABLE",
+    "route-rules": [
+      {
+        "cidr-block": "0.0.0.0/0",
+        "destination": "0.0.0.0/0",
+        "destination-type": "CIDR_BLOCK",
+        "network-entity-id": "ocid1.internetgateway.oc1.iad.aaaaaaaavbnczvyogucbvblsglokqznjib7jlc3ka5pzpt2v5mchncq6gtma"
+      }
+    ],
+    "time-created": "2019-10-19T17:11:36.518000+00:00",
+    "vcn-id": "ocid1.vcn.oc1.iad.aaaaaaaa7igr2rngs237pkhc3f4tzir6qzhhgwsln5ls3yvicrnz7pxb6h3a"
+  },
+  "etag": "659b23ab"
+}
+

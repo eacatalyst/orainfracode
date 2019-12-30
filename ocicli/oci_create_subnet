@@ -1,0 +1,50 @@
+#Get AD details
+oci iam availability-domain list -c $POCCOMP1
+"YQgH:US-ASHBURN-AD-1"
+#Get SL (Security List)
+oci network security-list list  \
+--compartment-id $POCCOMP1      \
+--vcn-id $POCVCN1  
+ "ocid1.securitylist.oc1.iad.aaaaaaaallfevtj7giv64ldg4qvwtm5frcrfojuhr6yfebohh6opmudih4iq"
+ "ocid1.securitylist.oc1.iad.aaaaaaaasdj3ih4pfh2atfpw4gwa2f2ccdco3txet67id6g2udxerrtmnrfq"     
+
+ oci network subnet create                              \
+ --vcn-id $POCVCN1                                      \
+ --compartment-id $POCCOMP1                             \
+ --availability-domain "YQgH:US-ASHBURN-AD-1"           \
+ --display-name "POCSN1"                                \
+ --dns-label "pocsn1"                                   \
+ --cidr-block "10.0.0.0/16"                             \
+ --security-list-ids                                    \
+ '["ocid1.securitylist.oc1.iad.aaaaaaaallfevtj7giv64ldg4qvwtm5frcrfojuhr6yfebohh6opmudih4iq","ocid1.securitylist.oc1.iad.aaaaaaaasdj3ih4pfh2atfpw4gwa2f2ccdco3txet67id6g2udxerrtmnrfq"]'        
+
+--output
+{
+  "data": {
+    "availability-domain": "YQgH:US-ASHBURN-AD-1",
+    "cidr-block": "10.0.0.0/16",
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaas2dn6zl2wfmu7nyhu3itqzwfas6p63us535ed734wpqpdtykyuaq",
+    "defined-tags": {},
+    "dhcp-options-id": "ocid1.dhcpoptions.oc1.iad.aaaaaaaad377eraylghn7beom4r6pr5mfwu7z63eqmv76z7dsurctkduf24q",
+    "display-name": "POCSN1",
+    "dns-label": "pocsn1",
+    "freeform-tags": {},
+    "id": "ocid1.subnet.oc1.iad.aaaaaaaage6trqjxi43geooqtpgs6cbckxavznn475u7od4jkdsnztmloglq",
+    "ipv6-cidr-block": null,
+    "ipv6-public-cidr-block": null,
+    "ipv6-virtual-router-ip": null,
+    "lifecycle-state": "AVAILABLE",
+    "prohibit-public-ip-on-vnic": false,
+    "route-table-id": "ocid1.routetable.oc1.iad.aaaaaaaawvtv3mosbihv7v6xwubf4eojv3ikistruuktfjykq4bkqb56dxda",
+    "security-list-ids": [
+      "ocid1.securitylist.oc1.iad.aaaaaaaallfevtj7giv64ldg4qvwtm5frcrfojuhr6yfebohh6opmudih4iq",
+      "ocid1.securitylist.oc1.iad.aaaaaaaasdj3ih4pfh2atfpw4gwa2f2ccdco3txet67id6g2udxerrtmnrfq"
+    ],
+    "subnet-domain-name": "pocsn1.pocvnc1.oraclevcn.com",
+    "time-created": "2019-10-19T21:29:08.759000+00:00",
+    "vcn-id": "ocid1.vcn.oc1.iad.aaaaaaaa7igr2rngs237pkhc3f4tzir6qzhhgwsln5ls3yvicrnz7pxb6h3a",
+    "virtual-router-ip": "10.0.0.1",
+    "virtual-router-mac": "00:00:17:49:FA:F4"
+  },
+  "etag": "d0b08acf"
+}

@@ -1,5 +1,0 @@
-# export POCCOMP1="ocid1.compartment.oc1..aaaaaaaas2dn6zl2wfmu7nyhu3itqzwfas6p63us535ed734wpqpdtykyuaq"
-# export POCVCN1="ocid1.vcn.oc1.iad.aaaaaaaa7igr2rngs237pkhc3f4tzir6qzhhgwsln5ls3yvicrnz7pxb6h3a"
-# https://jsonformatter.org/json-editor/4aef7f
-
-oci network security-list create --from-json file://create-POCSL1.json

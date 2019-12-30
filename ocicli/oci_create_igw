@@ -1,0 +1,21 @@
+oci network internet-gateway create \
+--compartment-id  $POCCOMP1         \
+--is-enabled true                   \
+--vcn-id $POCVCN1                   \
+--display-name "POCIG1"
+
+--output
+{
+  "data": {
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaas2dn6zl2wfmu7nyhu3itqzwfas6p63us535ed734wpqpdtykyuaq",
+    "defined-tags": {},
+    "display-name": "POCIG1",
+    "freeform-tags": {},
+    "id": "ocid1.internetgateway.oc1.iad.aaaaaaaavbnczvyogucbvblsglokqznjib7jlc3ka5pzpt2v5mchncq6gtma",
+    "is-enabled": true,
+    "lifecycle-state": "AVAILABLE",
+    "time-created": "2019-10-19T21:38:59.403000+00:00",
+    "vcn-id": "ocid1.vcn.oc1.iad.aaaaaaaa7igr2rngs237pkhc3f4tzir6qzhhgwsln5ls3yvicrnz7pxb6h3a"
+  },
+  "etag": "827a87ef"
+}
