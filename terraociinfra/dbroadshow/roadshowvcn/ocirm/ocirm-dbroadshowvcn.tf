@@ -1,9 +1,11 @@
 # ---- use variables defined in terraform.tfvars or bash profile file
-variable "tenancy_ocid" {}
-variable "user_ocid" {}
-variable "fingerprint" {}
-variable "private_key_path" {}
+# ---Variables Not Required using OCI-Resource Manager ---#
+
+# variable "user_ocid" {}
+# variable "fingerprint" {}
+# variable "private_key_path" {}
 variable "compartment_ocid" {}
+variable "tenancy_ocid" {}
 variable "region" {}
 variable "AD" {default = 1}
 
@@ -16,9 +18,12 @@ terraform {
 provider "oci" {
     region = "${var.region}"
     tenancy_ocid = "${var.tenancy_ocid}"
-    user_ocid = "${var.user_ocid}"
-    fingerprint = "${var.fingerprint}"
-    private_key_path = "${var.private_key_path}"
+
+# ---Variables Not Required using OCI-Resource Manager ---#
+
+  #  user_ocid = "${var.user_ocid}"
+  #  fingerprint = "${var.fingerprint}"
+  #  private_key_path = "${var.private_key_path}"
 }
 
 data "oci_identity_availability_domains" "ADs" {
@@ -64,3 +69,66 @@ resource "oci_core_internet_gateway" "dbroadshow-ig" {
      dhcp_options_id = "${oci_core_virtual_network.dbroadshow-vcn.default_dhcp_options_id}"
  }
 
+#--- Create Network Security List
+
+resource "oci_core_security_list" "db-Security-List" {
+    display_name = "db-Security-List"
+    compartment_id = "${var.compartment_ocid}"
+    vcn_id = "${oci_core_virtual_network.dbroadshow-vcn.id}"
+
+    egress_security_rules {
+        protocol = "all"
+        destination = "0.0.0.0/0"
+    }
+    
+    ingress_security_rules  {
+        
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options  {
+                min = 80
+                max = 80
+            }
+        }
+    ingress_security_rules  {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 443
+                max = 443 
+            }
+        }
+}
+
+#--- Defualt  Network Security List
+
+resource "oci_core_default_security_list" "default-security-list" {
+    manage_default_resource_id = "${oci_core_virtual_network.dbroadshow-vcn.default_security_list_id}" 
+
+    egress_security_rules  {
+        protocol = "all"
+        destination = "0.0.0.0/0"
+    }
+
+    ingress_security_rules  {
+            protocol = "6"
+            source = "10.0.0.0/24"
+
+            tcp_options {
+                min = 80
+                max = 80
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "10.0.1.0/24"
+
+            tcp_options {
+                min = 80
+                max = 80
+            }
+        }
+
+}
