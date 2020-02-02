@@ -77,23 +77,95 @@ resource "oci_core_security_list" "db-Security-List" {
     }
     
     ingress_security_rules  {
-        
             protocol = "6"
             source = "0.0.0.0/0"
 
-            tcp_options  {
-                min = 80
-                max = 80
+            tcp_options {
+                min = 8085
+                max = 8085
             }
         }
-    ingress_security_rules  {
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 9080
+                max = 9080
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 8002
+                max = 8002
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 18002
+                max = 18002
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 5600
+                max = 5600
+            }
+        }
+    ingress_security_rules {
             protocol = "6"
             source = "0.0.0.0/0"
 
             tcp_options {
                 min = 443
-                max = 443 
+                max = 443
             }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 7803
+                max = 7803
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 4903
+                max = 4903
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 7301
+                max = 7301
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 9851
+                max = 9851
+            }
+        
         }
 }
 
@@ -109,20 +181,92 @@ resource "oci_core_default_security_list" "default-security-list" {
 
     ingress_security_rules  {
             protocol = "6"
-            source = "10.0.0.0/24"
+            source = "0.0.0.0/0"
 
             tcp_options {
-                min = 80
-                max = 80
+                min = 8085
+                max = 8085
             }
         }
     ingress_security_rules {
             protocol = "6"
-            source = "10.0.1.0/24"
+            source = "0.0.0.0/0"
 
             tcp_options {
-                min = 80
-                max = 80
+                min = 9080
+                max = 9080
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 8002
+                max = 8002
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 18002
+                max = 18002
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 5600
+                max = 5600
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 443
+                max = 443
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 7803
+                max = 7803
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 4903
+                max = 4903
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 7301
+                max = 7301
+            }
+        }
+    ingress_security_rules {
+            protocol = "6"
+            source = "0.0.0.0/0"
+
+            tcp_options {
+                min = 9851
+                max = 9851
             }
         }
 
