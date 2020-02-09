@@ -1,10 +1,11 @@
-#variable "tenancy_ocid" {}
+variable "tenancy_ocid" {}
 #variable "user_ocid" {}
 #variable "fingerprint" {}
 #variable "private_key_path" {}
 variable "region" {}
 variable "public_subnet_id" {}
 variable "AD" {default = 1}
+variable "Image-Id" {default="ocid1.image.oc1..aaaaaaaat3a7crj3xn2dbqshdbxo4eiwtlqaqu5ozdzmf2os352n4cj2s2xa"}
 
 variable "instance_shape" {
   default = "VM.Standard2.1"
@@ -34,7 +35,8 @@ provider "oci" {
 variable "num_instances" {
   default = "3"
 }
-
+/*
+Hard coding image-id - Map not working with Resource Manager
 variable "instance_image_ocid" {
   type = "map"
 
@@ -46,7 +48,7 @@ variable "instance_image_ocid" {
     uk-london-1    = "ocid1.image.oc1..aaaaaaaat3a7crj3xn2dbqshdbxo4eiwtlqaqu5ozdzmf2os352n4cj2s2xa"
   }
 }
-
+*/
 
 resource "oci_core_instance" "dbroadshow_instance" {
   count               = "${var.num_instances}"
@@ -65,7 +67,7 @@ resource "oci_core_instance" "dbroadshow_instance" {
 
   source_details {
     source_type = "image"
-    source_id   = "${var.instance_image_ocid[var.region]}"
+    source_id   = "${var.Image-Id}"
 
   }
 }
