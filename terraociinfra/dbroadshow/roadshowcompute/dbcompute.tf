@@ -6,6 +6,8 @@ variable "region" {}
 variable "public_subnet_id" {}
 variable "AD" {default = 1}
 
+variable "Image-Id" {default="ocid1.image.oc1..aaaaaaaat3a7crj3xn2dbqshdbxo4eiwtlqaqu5ozdzmf2os352n4cj2s2xa"}
+
 variable "instance_shape" {
   default = "VM.Standard2.1"
 }
@@ -61,7 +63,7 @@ resource "oci_core_instance" "dbroadshow_instance" {
 
   source_details {
     source_type = "image"
-    source_id   = "${var.instance_image_ocid[var.region]}"
+    source_id   = "${var.Image-Id}"
 
   }
 }
