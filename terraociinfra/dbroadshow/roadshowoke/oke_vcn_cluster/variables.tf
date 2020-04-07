@@ -58,7 +58,7 @@ variable "cluster_kubernetes_version" {
 }
 
 variable "cluster_name" {
-  default = "OKE_Cluster"
+  default = "OKE_Micro_Services"
 }
 
 variable "availability_domain" {
