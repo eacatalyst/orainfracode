@@ -29,18 +29,15 @@ resource "oci_database_autonomous_database" "autonomous_data_warehouse" {
   #Optional
   # db_version              = "${data.oci_database_autonomous_db_versions.test_autonomous_dw_versions.autonomous_db_versions.0.version}"
   db_workload             = "${var.autonomous_data_warehouse_db_workload}"
-  display_name            = "ODI_12c_Training_ADW_image"
+  display_name            = "ODI_12c_Training_ADW_Test"
   freeform_tags           = "${var.autonomous_database_freeform_tags}"
   is_auto_scaling_enabled = "false"
   license_model           = "${var.autonomous_database_license_model}"
 
   # Optional for ODI12cLab
-  # autonomous_database_backup_id = "ocid1.autonomousdatabase.oc1.iad.abuwcljrzsxcbgxgvzxmiuoc2yxql2yrvee7yq6z5d4pccrcshteot77z2cq"
-  # autonomous_database_id        = "ocid1.autonomousdatabase.oc1.iad.abuwcljrzsxcbgxgvzxmiuoc2yxql2yrvee7yq6z5d4pccrcshteot77z2cq"
   clone_type = "FULL"
   source     = "DATABASE"
-  source_id  = "ocid1.autonomousdatabase.oc1.iad.abuwcljrzsxcbgxgvzxmiuoc2yxql2yrvee7yq6z5d4pccrcshteot77z2cq"
-  #source_id  = "ocid1.autonomousdatabase.oc1.iad.abuwcljr6xduulhmda73fe63azueibhpxtfahxgvsobtgglbuuwcl7sm5i6a"
+  source_id  = "ocid1.autonomousdatabase.oc1.iad.abuwcljrxawxjddesbe43fxicmjrf2svuauu25qgoh4je76h7cjkxsqxmfqa"
 }
 
 data "oci_database_autonomous_databases" "autonomous_data_warehouses" {
@@ -58,7 +55,6 @@ output "autonomous_data_warehouse_admin_password" {
   value = "${random_string.autonomous_data_warehouse_admin_password.result}"
 }
 
-# /*  -- removing output during troubleshooting 06/12/2020
 output "autonomous_data_warehouse_high_connection_string" {
   value = "${lookup(oci_database_autonomous_database.autonomous_data_warehouse.connection_strings.0.all_connection_strings, "high", "unavailable")}"
 }

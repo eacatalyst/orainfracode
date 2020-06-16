@@ -1,10 +1,9 @@
 // Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
-
-# Not required for resource manager
+// Commenting out - variables not required in resource manager
+variable "tenancy_ocid" {}
 # variable "user_ocid" {}
 # variable "fingerprint" {}
 # variable "private_key_path" {}
-variable "tenancy_ocid" {}
 variable "region" {}
 variable "compartment_ocid" {}
 
@@ -36,4 +35,7 @@ variable "autonomous_database_license_model" {
 
 variable "autonomous_database_is_dedicated" {
   default = false
+}
+variable "instance_count" {
+  default = 1
 }
