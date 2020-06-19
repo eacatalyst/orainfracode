@@ -7,7 +7,8 @@ variable "region" {}
 variable "public_subnet_id" {}
 variable "AD" { default = 1 }
 
-variable "Image-Id" { default = "ocid1.image.oc1.iad.aaaaaaaasp5ttepfvz562mayqrmnkxskunnda4wjcbjzworhysdxwewi7z3a" }
+# variable "Image-Id" { default = "ocid1.image.oc1.iad.aaaaaaaasp5ttepfvz562mayqrmnkxskunnda4wjcbjzworhysdxwewi7z3a" }
+variable "Image-Id" { default = "ocid1.image.oc1.iad.aaaaaaaatnyrp5t27lr4pwhhjfiyyrdwvrjdsin5tfrzpiutcdarqn3vnqfa" }
 
 variable "instance_shape" {
   default = "VM.Standard2.1"

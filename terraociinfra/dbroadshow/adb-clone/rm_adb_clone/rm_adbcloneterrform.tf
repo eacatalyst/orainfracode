@@ -23,7 +23,7 @@ resource "oci_database_autonomous_database" "autonomous_data_warehouse" {
   compartment_id           = "${var.compartment_ocid}"
   cpu_core_count           = "1"
   data_storage_size_in_tbs = "1"
-  db_name                  = "odi12cb_${var.student_id}"
+  db_name                  = "odi12cb${var.student_id}"
   #db_name                  = "adwclone-${count.index}"
 
   #Optional
@@ -37,7 +37,7 @@ resource "oci_database_autonomous_database" "autonomous_data_warehouse" {
   # Optional for ODI12cLab
   clone_type = "FULL"
   source     = "DATABASE"
-  source_id  = "ocid1.autonomousdatabase.oc1.iad.abuwcljrnr4hg5xie6qzeebzdlqfzgsuu5yhwadizcloypmanto7fnsjvqxa"
+  source_id  = "ocid1.autonomousdatabase.oc1.iad.abuwcljrxawxjddesbe43fxicmjrf2svuauu25qgoh4je76h7cjkxsqxmfqa"
 }
 
 data "oci_database_autonomous_databases" "autonomous_data_warehouses" {
